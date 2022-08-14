@@ -65,8 +65,6 @@ function addPost(event) {
     laravel,
     image,
   };
-  // console.log(post);
-  console.log(cardData);
   cardData.push(post);
   renderCard();
   // detailCard();
@@ -97,6 +95,37 @@ function renderCard() {
           </div>
         </div>
       </div>`;
+  }
+}
+
+function getDuration(startDate, endDate) {
+  let start = new Date(startDate);
+  let end = new Date(endDate);
+  let result;
+  if (start < end) {
+    result = end - start;
+  } else {
+    return alert('Wrong Date');
+  }
+  console.log(result);
+  const msecond = 1000;
+  const secInHours = 3600;
+  const hoursInDay = 24;
+  const dayInMonth = 30;
+  const monthInYears = 12;
+
+  let distanceInDays = Math.floor(result / (msecond * secInHours * hoursInDay));
+  let distanceInMonth = Math.floor(result / (msecond * secInHours * hoursInDay * dayInMonth));
+  let distanceInYears = Math.floor(result / (msecond * secInHours * hoursInDay * dayInMonth * monthInYears));
+
+  if (distanceInDays == 1) {
+    return `${distanceInDays} Day`;
+  } else if (distanceInMonth > 12) {
+    return `${distanceInYears} Years`;
+  } else if (distanceInDays >= 30) {
+    return `${distanceInMonth} Month `;
+  } else if (distanceInDays > 1) {
+    return `${distanceInDays} Days`;
   }
 }
 
@@ -139,34 +168,3 @@ function renderCard() {
 //   `;
 //   }
 // }
-
-function getDuration(startDate, endDate) {
-  let start = new Date(startDate);
-  let end = new Date(endDate);
-  let result;
-  if (start < end) {
-    result = end - start;
-  } else {
-    return alert('Wrong Date');
-  }
-  console.log(result);
-  const msecond = 1000;
-  const secInHours = 3600;
-  const hoursInDay = 24;
-  const dayInMonth = 30;
-  const monthInYears = 12;
-
-  let distanceInDays = Math.floor(result / (msecond * secInHours * hoursInDay));
-  let distanceInMonth = Math.floor(result / (msecond * secInHours * hoursInDay * dayInMonth));
-  let distanceInYears = Math.floor(result / (msecond * secInHours * hoursInDay * dayInMonth * monthInYears));
-
-  if (distanceInDays == 1) {
-    return `${distanceInDays} Day`;
-  } else if (distanceInMonth > 12) {
-    return `${distanceInYears} Years`;
-  } else if (distanceInDays >= 30) {
-    return `${distanceInMonth} Month `;
-  } else if (distanceInDays > 1) {
-    return `${distanceInDays} Days`;
-  }
-}
