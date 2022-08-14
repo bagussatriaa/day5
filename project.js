@@ -74,13 +74,15 @@ function addPost(event) {
 
 function renderCard() {
   document.getElementById('contents').innerHTML = '';
+
   // ${cardData[i].image}
   for (let i = 0; i < cardData.length; i++) {
     document.getElementById('contents').innerHTML += `
     <div class="contents" id="contents">
+      <a href="detail.html">
         <div class="card">
-          <img src="${cardData[i].image} " alt="User image" />
-         <a href ="detail.html"> <h3>${cardData[i].projectName}</h3></a>
+          <img src="${cardData[i].image}" alt="User image" />
+          <h3>${cardData[i].projectName}</h3></a>
           <h6>Duration: ${cardData[i].duration}</h6>
           <p>${cardData[i].desc} </p>
           <div class="icon">
@@ -98,42 +100,10 @@ function renderCard() {
   }
 }
 
-function getDuration(startDate, endDate) {
-  let start = new Date(startDate);
-  let end = new Date(endDate);
-  let result;
-  if (start < end) {
-    result = end - start;
-  } else {
-    return alert('Wrong Date');
-  }
-  console.log(result);
-  const msecond = 1000;
-  const secInHours = 3600;
-  const hoursInDay = 24;
-  const dayInMonth = 30;
-  const monthInYears = 12;
-
-  let distanceInDays = Math.floor(result / (msecond * secInHours * hoursInDay));
-  let distanceInMonth = Math.floor(result / (msecond * secInHours * hoursInDay * dayInMonth));
-  let distanceInYears = Math.floor(result / (msecond * secInHours * hoursInDay * dayInMonth * monthInYears));
-
-  if (distanceInDays == 1) {
-    return `${distanceInDays} Day`;
-  } else if (distanceInMonth > 12) {
-    return `${distanceInYears} Years`;
-  } else if (distanceInDays >= 30) {
-    return `${distanceInMonth} Month `;
-  } else if (distanceInDays > 1) {
-    return `${distanceInDays} Days`;
-  }
-}
-
 // function detailCard() {
 //   document.getElementById('details').innerHTML = '';
-
-//   document.getElementById('details').innerHTML += `
-//     <head id="details">
+//   for (let i = 0; i < cardData.length; i++) {
+//     document.getElementById('details').innerHTML += `
 //       <h1>${cardData[i].projectName}</h1>
 //       <div class="container">
 //         <img src="assets/vicky-hladynets-C8Ta0gwPbQg-unsplash.jpg" alt="" />
@@ -166,6 +136,37 @@ function getDuration(startDate, endDate) {
 //         </div>
 //       </div>
 //       <main>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima natus quos cupiditate nam quis dolore quaerat deserunt ipsam exercitationem dolorum incidunt optio quisquam odit modi, culpa hic pariatur quae. Deleniti?</main>
-//     </head>
-//     `;
+//   `;
+//   }
 // }
+
+function getDuration(startDate, endDate) {
+  let start = new Date(startDate);
+  let end = new Date(endDate);
+  let result;
+  if (start < end) {
+    result = end - start;
+  } else {
+    return alert('Wrong Date');
+  }
+  console.log(result);
+  const msecond = 1000;
+  const secInHours = 3600;
+  const hoursInDay = 24;
+  const dayInMonth = 30;
+  const monthInYears = 12;
+
+  let distanceInDays = Math.floor(result / (msecond * secInHours * hoursInDay));
+  let distanceInMonth = Math.floor(result / (msecond * secInHours * hoursInDay * dayInMonth));
+  let distanceInYears = Math.floor(result / (msecond * secInHours * hoursInDay * dayInMonth * monthInYears));
+
+  if (distanceInDays == 1) {
+    return `${distanceInDays} Day`;
+  } else if (distanceInMonth > 12) {
+    return `${distanceInYears} Years`;
+  } else if (distanceInDays >= 30) {
+    return `${distanceInMonth} Month `;
+  } else if (distanceInDays > 1) {
+    return `${distanceInDays} Days`;
+  }
+}
