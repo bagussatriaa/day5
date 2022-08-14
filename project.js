@@ -32,19 +32,19 @@ function addPost(event) {
   }
 
   let image = document.getElementById('img').files;
-  // if (image.length == 0) {
-  //   return alert('Please select an image to continue');
-  // }
-  // image = URL.createObjectURL(image[0]);
+  if (image.length == 0) {
+    return alert('Please select an image to continue');
+  }
+  image = URL.createObjectURL(image[0]);
 
   // input alert
-  // if (projectName == '') {
-  //   return alert('Fill the name of the project');
-  // } else if (desc == '') {
-  //   return alert('Description must be filled in');
-  // } else if (node == '' && python == '' && laravel == '' && js == '') {
-  //   return alert('Take at least 1 technologies');
-  // }
+  if (projectName == '') {
+    return alert('Fill the name of the project');
+  } else if (desc == '') {
+    return alert('Description must be filled in');
+  } else if (node == '' && python == '' && laravel == '' && js == '') {
+    return alert('Take at least 1 technologies');
+  }
 
   // Time declaration
   let startDate = document.getElementById('start-date').value;
@@ -69,6 +69,7 @@ function addPost(event) {
   console.log(cardData);
   cardData.push(post);
   renderCard();
+  // detailCard();
 }
 
 function renderCard() {
@@ -78,8 +79,8 @@ function renderCard() {
     document.getElementById('contents').innerHTML += `
     <div class="contents" id="contents">
         <div class="card">
-          <img src=" " alt="User image" />
-          <h3>${cardData[i].projectName}</h3>
+          <img src="${cardData[i].image} " alt="User image" />
+         <a href ="detail.html"> <h3>${cardData[i].projectName}</h3></a>
           <h6>Duration: ${cardData[i].duration}</h6>
           <p>${cardData[i].desc} </p>
           <div class="icon">
@@ -127,3 +128,44 @@ function getDuration(startDate, endDate) {
     return `${distanceInDays} Days`;
   }
 }
+
+// function detailCard() {
+//   document.getElementById('details').innerHTML = '';
+
+//   document.getElementById('details').innerHTML += `
+//     <head id="details">
+//       <h1>${cardData[i].projectName}</h1>
+//       <div class="container">
+//         <img src="assets/vicky-hladynets-C8Ta0gwPbQg-unsplash.jpg" alt="" />
+//         <div class="right">
+//           <h2>Duration</h2>
+//           <div class="date">
+//             <i class="fa-solid fa-calendar-days"></i>
+//             <p>20 July -</p>
+//             <p>30 July</p>
+//           </div>
+//           <div class="duration">
+//             <i class="fa-solid fa-clock"></i>
+//             <p>1 Month</p>
+//           </div>
+//           <div class="tech">
+//             <h2>Technologies</h2>
+//             <div class="icons1">
+//               <i class="fa-brands fa-node-js"></i>
+//               <p>Node Js</p>
+//               <i class="fa-brands fa-python"></i>
+//               <p>Python</p>
+//             </div>
+//             <div class="icons2">
+//               <i class="fa-brands fa-laravel"></i>
+//               <p>Laravel</p>
+//               <i class="fa-brands fa-js"></i>
+//               <p>Javascript</p>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//       <main>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima natus quos cupiditate nam quis dolore quaerat deserunt ipsam exercitationem dolorum incidunt optio quisquam odit modi, culpa hic pariatur quae. Deleniti?</main>
+//     </head>
+//     `;
+// }

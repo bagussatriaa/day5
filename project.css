@@ -133,6 +133,10 @@ form .submit {
   width: 70%;
   height: 70vh;
 }
+.card a {
+  text-decoration: none;
+  color: black;
+}
 .card img {
   width: 100%;
   height: 35vh;
