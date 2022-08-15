@@ -51,6 +51,8 @@ function addPost(event) {
   let endDate = document.getElementById('end-date').value;
   if (startDate == '' || endDate == '') {
     return alert('Fill the date');
+  } else if (startDate > endDate) {
+    return alert('Wrong Date');
   }
   let duration = getDuration(startDate, endDate);
   let post = {
